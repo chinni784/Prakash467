@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        /* Universal Selector */
+        * {
+            background-color: yellow;
+            color: white;
+        }
+        /* Element Selector */
+        h1{
+            background-color: green;
+            padding: 10px;
+        }
+        /* ID Selector */
+        #para1{
+            margin: 20px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: red;
+        }
+        .center{
+            text-align: center;
+            width: 50%;
+            background-color: blue;
+        }
+        h1, h1, p, {
+            word-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is element selector</h1>
+    <p id="para1" class="center">This id selector</p>
+    <h2 class="center">This is class selector</h2>
+    <p class="center"> This is group selector</p>
+    <h3>This is nothing</h3>
+</body>
+</html>
