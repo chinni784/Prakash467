@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+</head>
+<body>
+    <h1>operators of 2 numbers</h1>
+    <pre>
+    First Number
+    <input type="text" name="fnum" id="fnum">
+    Second Number
+    <input type="text" name="snum" id="snum">
+    <button onclick="add()">add </button>
+    <button onclick="sub()">sub </button>
+    <button onclick="mul()">mul </button>
+    <button onclick="div()">div </button>
+    <p id="Result"></p>
+    </pre>
+
+    <script>
+        function add(){
+            var a=parseInt(document.getElementById("fnum").value);
+            var b=parseInt(document.getElementById("snum").value);
+            var c=a+b;
+            document.getElementById("Result").innerHTML="The sum is: "+c;;
+        }
+            function sub(){
+            var a=parseInt(document.getElementById("fnum").value);
+            var b=parseInt(document.getElementById("snum").value);
+            var c=a-b;
+            document.getElementById("Result").innerHTML="The sub is: "+c;
+        }
+
+            function mul(){
+            var a=parseInt(document.getElementById("fnum").value);
+            var b=parseInt(document.getElementById("snum").value);
+            var c=a*b;
+            document.getElementById("Result").innerHTML="The mul is: "+c;
+        }
+            function div(){
+            var a=parseInt(document.getElementById("fnum").value);
+            var b=parseInt(document.getElementById("snum").value);
+            var c=a/b;
+            document.getElementById("Result").innerHTML="The result is: "+c;
+        }
+
+    </script>
+</body>
+</html>

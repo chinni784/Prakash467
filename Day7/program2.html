@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+      <style>
+    button {
+        width: 80px;
+        height: 80px;
+        margin: 5px;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(81, 227, 240);
+        border: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    input {
+        width: 240px;
+        height: 40px;
+        margin: 5px;
+        font-size: 16px;
+        text-align: right;
+        border: 2px solid #70d4f0;
+        border-radius: 5px;
+    }
+    body {
+        background-image: url('doll.png');
+        background-size: right;
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+    }
+  </style>
+</head>
+<body>
+    
+    <h2>Simple Calculator</h2>
+    <!-- input boxes -->
+     <pre align="left">
+    <input type="text" id="num1" readonly placeholder="First Number">
+    <input type="text" id="num2" readonly placeholder="Second Number">
+    <br><br></pre>
+    
+    <!-- number buttons -->
+     <div>
+     <button onclick="enternumber(1)">1</button>
+        <button onclick="enternumber(2)">2</button>
+        <button onclick="enternumber(3)">3</button>
+        <br>
+        <button onclick="enternumber(4)">4</button>
+        <button onclick="enternumber(5)">5</button>
+        <button onclick="enternumber(6)">6</button>
+        <br>
+        <button onclick="enternumber(7)">7</button>
+        <button onclick="enternumber(8)">8</button>
+        <button onclick="enternumber(9)">9</button>
+        <br>
+        <button onclick="enternumber(0)">0</button>
+        <button onclick="enternumber('clear')">clear</button>
+        </div>
+        <br>
+    <!-- operation buttons -->
+     <button onclick="calculate('add')">+</button>
+        <button onclick="calculate('sub')">-</button>
+        <button onclick="calculate('mul')">*</button>
+        <button onclick="calculate('div')">/</button>
+        <br><br>
+
+        <p id="result"></p>
+
+    <script>
+        let currentbox = 'num1';
+        function enternumber(num) {
+            document.getElementById(currentbox).value += num;
+        }
+
+        document.getElementById("num1").addEventListener("focus", () => currentBox = "num1");
+        document.getElementById("num2").addEventListener("focus", () => currentBox = "num2");
+
+        function calculate(op) {
+      let n1 = Number(document.getElementById("num1").value);
+      let n2 = Number(document.getElementById("num2").value);
+      let result;
+
+      if (op === "add") result = n1 + n2;
+      if (op === "sub") result = n1 - n2;
+      if (op === "mul") result = n1 * n2;
+      if (op === "div") {
+        result = n2 === 0 ? "Cannot divide by 0" : n1 / n2;
+      }
+
+      document.getElementById("result").innerText = "Result = " + result;
+    }
+    </script>
+</body>
+</html>

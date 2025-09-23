@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Timing</title>
+</head>
+<body>
+    <h1>JavaScript timing</h1>
+    <p>A Script on this page starts this clock :</p>
+    <p id="demo"></p>
+
+    <script>
+        setInterval(myTimer, 1000);
+        function myTimer() {
+            const d = new Date();
+            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>
