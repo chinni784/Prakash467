@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #333;
+    }
+    .box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    button {
+      background: #4a3aff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      margin-top: 8px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #3729c5;
+    }
+    input {
+      padding: 5px;
+      margin: 4px 0;
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Addition of 2 numbers</h1>
+    <pre>
+    
+    <input type="text" name="fnum" id="fnum">  <input type="text" name="snum" id="snum">   <button onclick="add()">Add
+        
+    </button>   
+    <p id="result"></p>
+    </pre>
+    <br><br>
+
+     <!-- 2. Check Even or Odd -->
+    <h2>2. Check Even or Odd</h2>
+    <p>Problem: Enter a number and check whether it is even or odd.</p>
+    <input type="number" id="evenOddNum">
+    <button onclick="checkEvenOdd()">Check
+
+    </button>
+    <p id="evenOddResult"></p>
+    <br><br>
+
+    <!-- 3. Reverse a String -->
+    <h2>3. Reverse a String</h2>
+    <p>Problem: Enter a word and display its reverse.</p>
+    <input type="text" id="strInput">
+    <button onclick="reverseString()">Reverse
+
+    </button>
+    <p id="reverseResult"></p>
+    <br><br>
+
+    <!-- 4. Multiplication Table -->
+    <h2>4. Multiplication Table</h2>
+    <p>Problem: Enter a number and generate its multiplication table (1 - 10).</p>
+    <input type="number" id="mulNum">
+    <button onclick="generateTable()">Generatetable
+
+    </button>
+    <div id="tableResult"></div>
+    <br><br>
+
+     <!-- 5. Simple Counter -->
+    <h2>5. Simple Counter</h2>
+    <p>Problem: Create a counter that increases and decreases on button clicks.</p>
+    <button onclick="decrease()">-
+
+    </button>
+    <span id="counter">0</span>
+    <button onclick="increase()">+
+
+    </button>
+
+
+
+
+    <script>
+        function add(){
+             var a=parseInt(document.getElementById("fnum").value);
+             var b=parseInt(document.getElementById("snum").value);
+             var c=a+b;
+             document.getElementById("result").innerHTML="The sum is"+c;
+        }
+         function checkEvenOdd() {
+            let num = parseInt(document.getElementById("evenOddNum").value);
+            if (isNaN(num)) {
+            document.getElementById("evenOddResult").innerText = "Please enter a number!";
+            return;
+         }
+        document.getElementById("evenOddResult").innerText = (num % 2 === 0) ? "Even" : "Odd";
+        }
+        function reverseString() {
+           let str = document.getElementById("strInput").value;
+           let reversed = str.split("").reverse().join("");
+           document.getElementById("reverseResult").innerText = "Reversed: " + reversed;
+        }
+        function generateTable() {
+      let num = parseInt(document.getElementById("mulNum").value);
+      let result = "";
+      if (!isNaN(num)) {
+          for (let i = 1; i <= 10; i++) {
+            result += `${num} x ${i} = ${num * i}<br>`;
+          }
+        }  
+        else {
+            result = "Please enter a number!";
+        }
+        document.getElementById("tableResult").innerHTML = result;
+        }
+         let count = 0;
+         function increase() {
+            count++;
+            document.getElementById("counter").innerText = count;
+        }
+        function decrease() {
+          count--;
+          document.getElementById("counter").innerText = count;
+        }
+    </script>
+</body>
+</html>
