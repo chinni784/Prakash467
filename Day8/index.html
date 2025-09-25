@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipe Finder</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f9fafb;
+            margin: 20px;
+        }
+        h1{
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #search-box{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        input{
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+        }
+        button{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            background: blue;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover{
+            background: darkgreen;
+        }   
+        #recipes{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card{
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgb(169, 209, 38);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .card:hover{
+            transform: scale(1.05);
+        }
+        .card a{
+            display: inline-block;
+            background-color: #e84d4d;
+            text-decoration: none;
+            padding: 8px 12px;
+            color: white;
+        }
+        .card a:hover{
+            background-color: rgb(7, 123, 7);
+        }
+    </style>
+</head>
+<body>
+    <!-- <marquee> -->
+    <h1>Food Recipe Finder</h1>
+    <!-- </marquee> -->
+    <div id="search-box">
+        <input type="text" id="search" placeholder="Search for a meal (e.g. chicken)">
+        <button onclick="searchMeal()">Search</button>
+    </div>
+    <div id="recipes"></div>
+    <script>
+        function searchMeal(){
+            let query=document.getElementById('search').value.trim();
+            // console.log(query);
+            if(!query){
+                document.getElementById('recipes').innerHTML="<p>Please enter a food name.</p>";
+                return;
+            }
+            fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+query)
+            .then(response=>response.json())
+            .then(data=>{
+                let container=document.getElementById('recipes');
+                container.innerHTML="";
+
+                if(!data.meals){
+                    container.innerHTML="<p>No recipes found.</p>";
+                    return;
+                }
+                data.meals.forEach(meal=>{
+                    let card=document.createElement('div');
+                    card.className='card';
+                    card.innerHTML=`
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" style="width:100%; border-radius: 8px;">
+                        <h3>${meal.strMeal}</h3>
+                        <p><strong>Category:</strong> ${meal.strCategory}</p>
+                        <p><strong>Area:</strong> ${meal.strArea}</p>
+                        <a href="${meal.strYoutube}" target="_blank">Watch Recipe</a>
+                    `;
+                    container.appendChild(card);
+                })
+            })
+        }
+    </script>
+</body>
+</html>
